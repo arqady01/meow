@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   circleDefault: {
-    backgroundColor: '#FFF7ED', // very light orange
+    backgroundColor: '#FEF3C7', // match page background
   },
   circlePlaying: {
     backgroundColor: '#FDBA74', // orange-300
