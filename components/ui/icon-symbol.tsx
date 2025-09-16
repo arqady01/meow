@@ -18,6 +18,22 @@ const MAPPING = {
   'paperplane.fill': 'send',
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
+  // App specific icons
+  // Tabs
+  'speaker.wave.2': 'volume-up',
+  'speaker.wave.2.fill': 'volume-up',
+  'info.circle': 'info',
+  'info.circle.fill': 'info',
+  // About screen and components
+  // Fallback: no explicit 'pets' in this Material set; use music-note
+  'cat.fill': 'music-note',
+  'star.fill': 'star',
+  'hand.tap.fill': 'touch-app',
+  'wifi.slash': 'wifi-off',
+  'folder.fill': 'folder',
+  'book.fill': 'book',
+  'gearshape.fill': 'settings',
+  'heart.fill': 'favorite',
 } as IconMapping;
 
 /**
