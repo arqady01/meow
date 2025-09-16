@@ -35,10 +35,10 @@ export default function TabLayout() {
       <Tabs.Screen
         name="explore"
         options={{
-          title: '关于',
+          title: '工具',
           tabBarIcon: ({ color, focused }) => (
             <View style={[styles.tabIconContainer, focused && styles.tabIconContainerFocused]}>
-              <IconSymbol size={24} name={focused ? "info.circle.fill" : "info.circle"} color={focused ? "#9A3412" : color} />
+              <IconSymbol size={24} name={focused ? "gearshape.fill" : "gearshape"} color={focused ? "#9A3412" : color} />
             </View>
           ),
         }}

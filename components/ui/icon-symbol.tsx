@@ -33,7 +33,11 @@ const MAPPING = {
   'folder.fill': 'folder',
   'book.fill': 'book',
   'gearshape.fill': 'settings',
+  'gearshape': 'settings',
   'heart.fill': 'favorite',
+  // Tools
+  'scalemass': 'scale',
+  'scalemass.fill': 'scale',
 } as IconMapping;
 
 /**
