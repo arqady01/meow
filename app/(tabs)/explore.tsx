@@ -9,13 +9,7 @@ export default function ToolsScreen() {
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 32 }}>
         {/* 头部 */}
         <View style={styles.header} className="items-start px-5">
-          <View style={styles.iconContainer}>
-            <IconSymbol name="gearshape.fill" size={48} color="#9A3412" />
-          </View>
-          <ThemedText type="title" style={styles.appTitle}>
-            🔧 工具
-          </ThemedText>
-          <ThemedText style={styles.versionText}>猫咪工具箱</ThemedText>
+          <ThemedText type="title" style={styles.appTitle}>猫咪工具箱</ThemedText>
         </View>
 
         {/* 年龄换算器 */}
@@ -219,7 +213,7 @@ const styles = StyleSheet.create({
     borderColor: '#18181B',
   },
   appTitle: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: '900',
     color: '#111827',
     textAlign: 'left',
