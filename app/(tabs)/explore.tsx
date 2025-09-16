@@ -7,27 +7,29 @@ export default function ToolsScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 32 }}>
-        {/* 头部 */}
-        <View style={styles.header} className="items-start px-5">
-          <ThemedText type="title" style={styles.appTitle}>猫咪工具箱</ThemedText>
-        </View>
-
-        {/* 年龄换算器 */}
-        <View style={styles.card}>
-          <View style={styles.cardHeader}>
-            <IconSymbol name="book.fill" size={24} color="#10B981" />
-            <ThemedText type="subtitle" style={styles.cardTitle}>年龄换算</ThemedText>
+        <View style={styles.pageInner} className="px-4 pt-10">
+          {/* 头部 */}
+          <View style={styles.header} className="items-start">
+            <ThemedText type="title" style={styles.appTitle}>猫咪工具箱</ThemedText>
           </View>
-          <AgeConverter />
-        </View>
 
-        {/* 质量换算器 */}
-        <View style={styles.card}>
-          <View style={styles.cardHeader}>
-            <IconSymbol name="scalemass.fill" size={24} color="#F59E0B" />
-            <ThemedText type="subtitle" style={styles.cardTitle}>质量换算</ThemedText>
+          {/* 年龄换算器 */}
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <IconSymbol name="book.fill" size={24} color="#10B981" />
+              <ThemedText type="subtitle" style={styles.cardTitle}>年龄换算</ThemedText>
+            </View>
+            <AgeConverter />
           </View>
-          <WeightConverter />
+
+          {/* 质量换算器 */}
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <IconSymbol name="scalemass.fill" size={24} color="#F59E0B" />
+              <ThemedText type="subtitle" style={styles.cardTitle}>质量换算</ThemedText>
+            </View>
+            <WeightConverter />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -195,11 +197,12 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#FEF3C7' },
   scrollView: { flex: 1 },
 
+  pageInner: { flex: 1 },
   header: {
     alignItems: 'center',
-    marginTop: 40,
-    marginBottom: 24,
-    paddingHorizontal: 20,
+    marginTop: 8,
+    marginBottom: 16,
+    paddingHorizontal: 0,
   },
   iconContainer: {
     width: 88,
@@ -226,7 +229,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 18,
     marginBottom: 16,
-    marginHorizontal: 20,
+    marginHorizontal: 0,
     borderWidth: 4,
     borderColor: '#18181B',
   },
