@@ -27,11 +27,11 @@ export default function ToolsScreen() {
           <AgeConverter />
         </View>
 
-        {/* 体重换算器 */}
+        {/* 质量换算器 */}
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <IconSymbol name="scalemass.fill" size={24} color="#F59E0B" />
-            <ThemedText type="subtitle" style={styles.cardTitle}>体重换算</ThemedText>
+            <ThemedText type="subtitle" style={styles.cardTitle}>质量换算</ThemedText>
           </View>
           <WeightConverter />
         </View>
@@ -136,7 +136,7 @@ function AgeConverter() {
 
 function WeightConverter() {
   const [kgText, setKgText] = useState('');
-  const [jinText, setJinText] = useState('');
+  const [lbText, setLbText] = useState('');
 
   const format = (n: number) => {
     if (!isFinite(n)) return '';
@@ -144,29 +144,31 @@ function WeightConverter() {
     return fixed.toString();
   };
 
+  const KG_TO_LB = 2.20462262185; // 千克→磅
+
   const onKgChange = (t: string) => {
     const cleaned = t.replace(/[^0-9.]/g, '');
     setKgText(cleaned);
-    if (cleaned === '') { setJinText(''); return; }
+    if (cleaned === '') { setLbText(''); return; }
     const n = parseFloat(cleaned);
     if (isNaN(n)) return;
-    setJinText(format(n * 2)); // 1 公斤 = 2 斤
+    setLbText(format(n * KG_TO_LB));
   };
 
-  const onJinChange = (t: string) => {
+  const onLbChange = (t: string) => {
     const cleaned = t.replace(/[^0-9.]/g, '');
-    setJinText(cleaned);
+    setLbText(cleaned);
     if (cleaned === '') { setKgText(''); return; }
     const n = parseFloat(cleaned);
     if (isNaN(n)) return;
-    setKgText(format(n / 2));
+    setKgText(format(n / KG_TO_LB));
   };
 
   return (
     <View style={styles.converter}>
       <View style={styles.inputRow}>
         <View style={styles.inputBlock}>
-          <Text style={styles.inputLabel}>公斤（kg）</Text>
+          <Text style={styles.inputLabel}>千克（kg）</Text>
           <TextInput
             value={kgText}
             onChangeText={onKgChange}
@@ -180,12 +182,12 @@ function WeightConverter() {
           <Text style={styles.eqText}>=</Text>
         </View>
         <View style={styles.inputBlock}>
-          <Text style={styles.inputLabel}>斤（jin）</Text>
+          <Text style={styles.inputLabel}>磅（lb）</Text>
           <TextInput
-            value={jinText}
-            onChangeText={onJinChange}
+            value={lbText}
+            onChangeText={onLbChange}
             keyboardType="numeric"
-            placeholder="例如 8.4"
+            placeholder="例如 9.3"
             placeholderTextColor="#9CA3AF"
             style={styles.input}
           />
