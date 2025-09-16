@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Pressable, Alert, Animated, Text } from 'react-native';
+import { Image } from 'expo-image';
 // Removed ThemedView in circular layout
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { audioPlayer, SoundFile, soundFiles } from '@/utils/audio-player';
@@ -53,11 +54,20 @@ const CircleSoundButton: React.FC<CircleSoundButtonProps> = ({
           isPlaying ? styles.circlePlaying : styles.circleDefault,
         ]}
       >
-        <IconSymbol
-          name={sound.icon as any}
-          size={32}
-          color={isPlaying ? '#7C2D12' : '#1D4ED8'}
-        />
+        {sound.image ? (
+          <Image
+            source={sound.image}
+            style={styles.circleImage}
+            contentFit="contain"
+            fadeDuration={150}
+          />
+        ) : (
+          <IconSymbol
+            name={sound.icon as any}
+            size={32}
+            color={isPlaying ? '#7C2D12' : '#1D4ED8'}
+          />
+        )}
       </Animated.View>
       <Text style={styles.itemLabel} numberOfLines={1}>
         {sound.label}
@@ -208,6 +218,10 @@ const styles = StyleSheet.create({
   circlePlaying: {
     backgroundColor: '#FDBA74', // orange-300
     borderColor: '#7C2D12',
+  },
+  circleImage: {
+    width: 44,
+    height: 44,
   },
   itemLabel: {
     fontSize: 14,

@@ -9,6 +9,8 @@ export interface SoundFile {
   description: string;
   // 静态资源模块，使用 require 引入，供 Audio 使用
   source: any;
+  // 可选：本地图片资源，优先展示为圆形按钮内的图
+  image?: any;
 }
 
 export const soundFiles: SoundFile[] = [
@@ -20,6 +22,7 @@ export const soundFiles: SoundFile[] = [
     filename: 'classic-meow.m4a',
     description: '传统的猫叫声，适合日常互动',
     source: require('../assets/sounds/classic-meow.m4a'),
+    image: require('../assets/images/sounds/img1.png'),
   },
   {
     id: '2',
@@ -29,6 +32,7 @@ export const soundFiles: SoundFile[] = [
     filename: 'demanding-meow.m4a',
     description: '撒娇式的叫声，吸引猫咪注意',
     source: require('../assets/sounds/demanding-meow.m4a'),
+    image: require('../assets/images/sounds/img2.png'),
   },
   {
     id: '3',
@@ -38,6 +42,7 @@ export const soundFiles: SoundFile[] = [
     filename: 'gentle-purr.m4a',
     description: '满足的呼噜声，让猫咪感到安心',
     source: require('../assets/sounds/gentle-purr.m4a'),
+    image: require('../assets/images/sounds/img3.png'),
   }
 ];
 
