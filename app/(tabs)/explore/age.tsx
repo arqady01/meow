@@ -1,34 +1,23 @@
 import React, { useMemo, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
-import { IconSymbol } from '@/components/ui/icon-symbol';
 import { ThemedText } from '@/components/themed-text';
+import { IconSymbol } from '@/components/ui/icon-symbol';
 
-export default function ToolsScreen() {
+export default function AgeToolScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 32 }}>
         <View style={styles.pageInner} className="px-4 pt-10">
-          {/* 头部 */}
           <View style={styles.header} className="items-start">
-            <ThemedText type="title" style={styles.appTitle}>猫咪工具箱</ThemedText>
+            <View style={styles.cardHeader}>
+              <IconSymbol name="book.fill" size={28} color="#10B981" />
+              <ThemedText type="title" style={styles.appTitle}>年龄换算</ThemedText>
+            </View>
+            <Text style={styles.helperText}>输入猫咪或人类年龄，自动互算并给出阶段提示</Text>
           </View>
 
-          {/* 年龄换算器 */}
           <View style={styles.card}>
-            <View style={styles.cardHeader}>
-              <IconSymbol name="book.fill" size={24} color="#10B981" />
-              <ThemedText type="subtitle" style={styles.cardTitle}>年龄换算</ThemedText>
-            </View>
             <AgeConverter />
-          </View>
-
-          {/* 质量换算器 */}
-          <View style={styles.card}>
-            <View style={styles.cardHeader}>
-              <IconSymbol name="scalemass.fill" size={24} color="#F59E0B" />
-              <ThemedText type="subtitle" style={styles.cardTitle}>质量换算</ThemedText>
-            </View>
-            <WeightConverter />
           </View>
         </View>
       </ScrollView>
@@ -130,118 +119,39 @@ function AgeConverter() {
   );
 }
 
-function WeightConverter() {
-  const [kgText, setKgText] = useState('');
-  const [lbText, setLbText] = useState('');
-
-  const format = (n: number) => {
-    if (!isFinite(n)) return '';
-    const fixed = Math.round(n * 10) / 10; // 1 位小数
-    return fixed.toString();
-  };
-
-  const KG_TO_LB = 2.20462262185; // 千克→磅
-
-  const onKgChange = (t: string) => {
-    const cleaned = t.replace(/[^0-9.]/g, '');
-    setKgText(cleaned);
-    if (cleaned === '') { setLbText(''); return; }
-    const n = parseFloat(cleaned);
-    if (isNaN(n)) return;
-    setLbText(format(n * KG_TO_LB));
-  };
-
-  const onLbChange = (t: string) => {
-    const cleaned = t.replace(/[^0-9.]/g, '');
-    setLbText(cleaned);
-    if (cleaned === '') { setKgText(''); return; }
-    const n = parseFloat(cleaned);
-    if (isNaN(n)) return;
-    setKgText(format(n / KG_TO_LB));
-  };
-
-  return (
-    <View style={styles.converter}>
-      <View style={styles.inputRow}>
-        <View style={styles.inputBlock}>
-          <Text style={styles.inputLabel}>千克（kg）</Text>
-          <TextInput
-            value={kgText}
-            onChangeText={onKgChange}
-            keyboardType="numeric"
-            placeholder="例如 4.2"
-            placeholderTextColor="#9CA3AF"
-            style={styles.input}
-          />
-        </View>
-        <View style={styles.eqBlock}>
-          <Text style={styles.eqText}>=</Text>
-        </View>
-        <View style={styles.inputBlock}>
-          <Text style={styles.inputLabel}>磅（lb）</Text>
-          <TextInput
-            value={lbText}
-            onChangeText={onLbChange}
-            keyboardType="numeric"
-            placeholder="例如 9.3"
-            placeholderTextColor="#9CA3AF"
-            style={styles.input}
-          />
-        </View>
-      </View>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#FEF3C7' },
+  container: { flex: 1, backgroundColor: '#FFF3EA' },
   scrollView: { flex: 1 },
-
   pageInner: { flex: 1 },
   header: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginTop: 8,
     marginBottom: 16,
-    paddingHorizontal: 0,
   },
-  iconContainer: {
-    width: 88,
-    height: 88,
-    borderRadius: 16,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 16,
-    borderWidth: 4,
-    borderColor: '#18181B',
-  },
+  cardHeader: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   appTitle: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: '900',
     color: '#111827',
-    textAlign: 'left',
-    marginBottom: 4,
+    marginBottom: 6,
   },
-  versionText: { fontSize: 14, color: '#374151', fontWeight: '700' },
-
+  helperText: {
+    fontSize: 14,
+    color: '#1F2937',
+    fontWeight: '600',
+  },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     borderRadius: 12,
-    padding: 18,
-    marginBottom: 16,
-    marginHorizontal: 0,
+    padding: 20,
     borderWidth: 4,
     borderColor: '#18181B',
   },
-  cardHeader: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 },
-  cardTitle: { fontSize: 18, fontWeight: '900', color: '#111827' },
-
   converter: { gap: 14 },
   inputRow: { flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', gap: 8 },
   inputBlock: { flex: 1 },
   eqBlock: { width: 40, alignItems: 'center', justifyContent: 'center' },
   eqText: { fontSize: 24, fontWeight: '900', color: '#111827' },
-
   inputLabel: { fontSize: 12, fontWeight: '900', color: '#111827', marginBottom: 6 },
   input: {
     backgroundColor: '#FFFFFF',
@@ -254,6 +164,5 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     color: '#111827',
   },
-
   tips: { marginTop: 8, fontSize: 12, color: '#1F2937', fontWeight: '700' },
 });

@@ -1,12 +1,19 @@
 import React from 'react';
-import { View, StatusBar } from 'react-native';
+import { View, StatusBar, StyleSheet } from 'react-native';
 import { SoundGrid } from '@/components/sound-grid';
 
 export default function HomeScreen() {
   return (
-    <View className="flex-1 bg-background-warning-50">
-      <StatusBar style="auto" backgroundColor="#FEF3C7" />
+    <View style={styles.container}>
+      <StatusBar style="auto" backgroundColor="#FFF3EA" />
       <SoundGrid />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFF3EA',
+  },
+});

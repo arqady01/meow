@@ -161,7 +161,7 @@ export const SoundGrid: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FEF3C7',
+    backgroundColor: '#FFF3EA',
   },
   mainHeader: {
     alignItems: 'center',

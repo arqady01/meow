@@ -43,6 +43,16 @@ export const soundFiles: SoundFile[] = [
     description: '满足的呼噜声，让猫咪感到安心',
     source: require('../assets/sounds/gentle-purr.m4a'),
     image: require('../assets/images/sounds/img3.png'),
+  },
+  {
+    id: '4',
+    name: '让猫害怕',
+    label: '炸毛',
+    icon: 'heart.fill',
+    filename: 'fried-hair.m4a',
+    description: '打架挑衅的声音，让猫咪感到害怕',
+    source: require('../assets/sounds/fried-hair.m4a'),
+    image: require('../assets/images/sounds/img4.png'),
   }
 ];
 

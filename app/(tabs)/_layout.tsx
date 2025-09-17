@@ -50,7 +50,7 @@ export default function TabLayout() {
 const styles = StyleSheet.create({
   // New-brutalist bottom bar: flat surface, hard border, chunky spacing
   tabBar: {
-    backgroundColor: '#FEF3C7',
+    backgroundColor: '#FFF3EA',
     borderTopWidth: 3,
     borderTopColor: '#18181B',
     elevation: 0,
